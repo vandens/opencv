@@ -7,6 +7,8 @@ import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.highgui.Highgui;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
 //
@@ -21,9 +23,9 @@ class DetectFaceDemo {
     // directory.
     //CascadeClassifier faceDetector = new CascadeClassifier(getClass().getResource("/lbpcascade_frontalface.xml").getPath());
     //Mat image = Highgui.imread(getClass().getResource("/lena.png").getPath());
-    CascadeClassifier faceDetector = new CascadeClassifier("C:/Users/TP32447/Documents/netbeans/OpenCV/src/lbpcascade_frontalface.xml");
-    Mat image = Highgui.imread("D:/opencv/lena.png");
-    
+    CascadeClassifier faceDetector = new CascadeClassifier("C:/Users/Vandens mc Maddens/Documents/GitHub/opencv/src/lbpcascade_frontalface.xml");
+    //Mat image = Highgui.imgread("C:/Users/Vandens mc Maddens/Documents/GitHub/opencv/src/lena.png");
+    Mat image = Imgcodecs.imread("C:/Users/Vandens mc Maddens/Documents/GitHub/opencv/src/img.jpg");
     // Detect faces in the image.
     // MatOfRect is a special container class for Rect.
     MatOfRect faceDetections = new MatOfRect();
@@ -33,13 +35,13 @@ class DetectFaceDemo {
 
     // Draw a bounding box around each face.
     for (Rect rect : faceDetections.toArray()) {
-        Core.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 0));
+        Imgproc.rectangle(image, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 0));
     }
 
     // Save the visualized detection.
-    String filename = "faceDetection.png";
+    String filename = "faceDetection.jpg";
     System.out.println(String.format("Writing %s", filename));
-    Highgui.imwrite(filename, image);
+    Imgcodecs.imwrite(filename, image);
   }
 }
 

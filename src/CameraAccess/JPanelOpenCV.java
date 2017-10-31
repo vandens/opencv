@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 import org.opencv.core.*;
 import org.opencv.highgui.Highgui;        
-import org.opencv.highgui.VideoCapture;        
+import org.opencv.videoio.VideoCapture;        
 
 public class JPanelOpenCV extends JPanel{
 
