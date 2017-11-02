@@ -52,6 +52,7 @@ public class Mat2Image {
             img.getRaster().setDataElements(0, 0, 
                                mat.cols(), mat.rows(), dat);
             
+            mat.release();
         return img;
     }
     
